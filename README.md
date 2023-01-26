@@ -13,9 +13,9 @@ Example how to implement DDD in c#, with webAPI as presentation layer.
 |  |     |---------> Contracts used between Presentation's API's and application layer
 |  | - Application
 |  |     |---------> Application layer coordenate and delegate tasks to down layer (domain) 
-|    \
-|    | - Domain
-|          |---------> Core of application. There are all the bussiness rules
+|   \
+|   | - Domain
+|        |---------> Core of application. There are all the bussiness rules
 |    
 | - Infrastructure
 |     |---------> Implement all kind of services or providers, interact with application and domain directly.
