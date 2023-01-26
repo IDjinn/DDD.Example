@@ -7,12 +7,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers" />
+        <Folder Include="Controllers"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\DDD.Example.Application\DDD.Example.Application.csproj"/>
+        <ProjectReference Include="..\DDD.Example.Infrastructure\DDD.Example.Infrastructure.csproj"/>
     </ItemGroup>
 
 </Project>
