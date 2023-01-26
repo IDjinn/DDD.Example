@@ -1,4 +1,5 @@
 using DDD.Example.Application.Authentication.Commands.Register;
+using DDD.Example.Application.Authentication.Queries.Login;
 using DDD.Example.Presentation.Contracts.Authentication;
 using DDD.Example.Presentation.WebAPI.Common;
 using MediatR;
@@ -20,7 +21,16 @@ public class UserController : ApiController
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginRequest loginRequest)
     {
-        return Ok();
+        var loginQuery = (LoginQuery)loginRequest;
+        var authResult = await _mediator.Send(loginQuery);
+
+        return authResult.Match(result =>
+            {
+                var response = (AuthenticationResponse)result;
+                return Ok(response);
+            },
+            Problem
+        );
     }
 
     [HttpPost("register")]
@@ -34,7 +44,7 @@ public class UserController : ApiController
                 var response = (AuthenticationResponse)result;
                 return Ok(response);
             },
-            errors => Problem(errors)
+            Problem
         );
     }
 }
