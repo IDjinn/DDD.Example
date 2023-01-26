@@ -10,6 +10,7 @@ builder.Services
     .AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
+app.UseExceptionHandler("/error");
 app.SetupSwagger();
 app.UseHttpsRedirection();
 app.UseAuthorization();

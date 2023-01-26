@@ -1,4 +1,7 @@
+using DDD.Example.Application.Authentication.Commands.Register;
+using DDD.Example.Presentation.Contracts.Authentication;
 using DDD.Example.Presentation.WebAPI.Common;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DDD.Example.Presentation.WebAPI.Controllers;
@@ -7,15 +10,31 @@ namespace DDD.Example.Presentation.WebAPI.Controllers;
 [Route("auth")]
 public class UserController : ApiController
 {
+    private readonly ISender _mediator;
+
+    public UserController(ISender mediator)
+    {
+        _mediator = mediator;
+    }
+
     [HttpPost("login")]
-    public async Task<IActionResult> Login()
+    public async Task<IActionResult> Login(LoginRequest loginRequest)
     {
         return Ok();
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register()
+    public async Task<IActionResult> Register(RegisterRequest registerRequest)
     {
-        return Ok();
+        var registerCommand = (RegisterCommand)registerRequest;
+        var authResult = await _mediator.Send(registerCommand);
+
+        return authResult.Match(result =>
+            {
+                var response = (AuthenticationResponse)result;
+                return Ok(response);
+            },
+            errors => Problem(errors)
+        );
     }
 }
