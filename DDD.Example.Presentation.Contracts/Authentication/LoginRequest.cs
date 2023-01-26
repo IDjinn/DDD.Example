@@ -2,7 +2,7 @@ using DDD.Example.Application.Authentication.Queries.Login;
 
 namespace DDD.Example.Presentation.Contracts.Authentication;
 
-public record LoginRequest(
+public readonly record struct LoginRequest(
     string Identity,
     string Password
 )

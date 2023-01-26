@@ -2,9 +2,9 @@ using DDD.Example.Application.Authentication.Common;
 
 namespace DDD.Example.Presentation.Contracts.Authentication;
 
-public record struct AuthenticationResponse(
+public readonly record struct AuthenticationResponse(
     string UserId,
-    string Token
+    JwtToken Token
 )
 {
     public static implicit operator AuthenticationResponse(AuthResult result)

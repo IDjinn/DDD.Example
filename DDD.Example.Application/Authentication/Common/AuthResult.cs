@@ -1,6 +1,6 @@
 namespace DDD.Example.Application.Authentication.Common;
 
-public record struct AuthResult(
+public readonly record struct AuthResult(
     string UserId,
-    string Token
+    JwtToken Token
 );

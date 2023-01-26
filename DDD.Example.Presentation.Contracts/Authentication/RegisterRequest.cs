@@ -2,7 +2,7 @@ using DDD.Example.Application.Authentication.Commands.Register;
 
 namespace DDD.Example.Presentation.Contracts.Authentication;
 
-public record RegisterRequest(
+public readonly record struct RegisterRequest(
     string FirstName,
     string LastName,
     string Email,
