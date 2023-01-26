@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using ICryptoProvider = DDD.Example.Application.Common.Interfaces.ICryptoProvider;
 
 namespace DDD.Example.Infrastructure;
 
@@ -16,6 +17,8 @@ public static class DependencyInjector
         ConfigurationManager configuration)
     {
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+        services.AddSingleton<ICryptoProvider, CryptoProvider>();
+        services.AddSingleton<IPasswordService, PasswordService>();
 
 
         services.AddAuth(configuration);
