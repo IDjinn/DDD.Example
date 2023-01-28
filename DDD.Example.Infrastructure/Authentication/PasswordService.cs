@@ -2,6 +2,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using DDD.Example.Application.Common.Interfaces;
+using DDD.Example.Application.Domain.Users;
 
 namespace DDD.Example.Infrastructure.Authentication;
 
@@ -15,7 +16,7 @@ public class PasswordService : IPasswordService
         _cryptoProvider = cryptoProvider;
     }
 
-    public Password HashPassword(string password)
+    public Application.Domain.Users.Password HashPassword(string password)
     {
         var safePassword = Convert.ToBase64String(Encoding.UTF8.GetBytes(password));
         var encryptedWithPepperPassword =
