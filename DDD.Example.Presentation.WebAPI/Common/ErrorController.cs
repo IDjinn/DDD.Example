@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DDD.Example.Presentation.WebAPI.Common;
 
 [ApiExplorerSettings(IgnoreApi = true)]
-public class ErrorController : ApiController
+public class ErrorController : ApiController<ObjectResult>
 {
     private readonly ILogger<ErrorController> _logger;
 

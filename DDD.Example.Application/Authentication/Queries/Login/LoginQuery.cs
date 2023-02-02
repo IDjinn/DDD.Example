@@ -9,7 +9,7 @@ using MediatR;
 
 namespace DDD.Example.Application.Authentication.Queries.Login;
 
-public class LoginQuery : Query, IRequest<ErrorOr<AuthResult>>
+public record LoginQuery : Query, IRequest<ErrorOr<AuthResult>>
 {
     public string Identity { get; init; } = null!;
     public string Password { get; init; } = null!;

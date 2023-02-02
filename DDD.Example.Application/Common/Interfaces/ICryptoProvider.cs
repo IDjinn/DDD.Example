@@ -6,5 +6,5 @@ public interface ICryptoProvider
     public bool CheckMatchHash(string value, string hash);
     public byte[] Encrypt(byte[] value);
 
-    public readonly record struct SaltedHash(string Salt, string Hash);
+    public record SaltedHash(string Salt, string Hash);
 }

@@ -2,7 +2,7 @@ using ErrorOr;
 
 namespace DDD.Example.Application.Common.Interfaces;
 
-public abstract class Command
+public abstract record Command
 {
     public abstract ErrorOr<bool> TryValidate();
 }

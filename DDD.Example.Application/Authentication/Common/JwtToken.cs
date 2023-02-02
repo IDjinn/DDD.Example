@@ -1,6 +1,6 @@
 namespace DDD.Example.Application.Authentication.Common;
 
-public readonly record struct JwtToken(string Value)
+public sealed record JwtToken(string Value)
 {
     public override string ToString()
     {

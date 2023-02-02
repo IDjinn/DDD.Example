@@ -22,7 +22,7 @@ public class PasswordService : IPasswordService
         var encryptedWithPepperPassword =
             Convert.ToBase64String(_cryptoProvider.Encrypt(Encoding.UTF8.GetBytes(safePassword + PEPPER)));
         var (salt, hash) = _cryptoProvider.HashAndSalt(encryptedWithPepperPassword);
-        return new Password { Value = hash, Salt = salt };
+        return new Password(hash, salt);
     }
 
     public bool CheckMatchRawPassword(Password password, string rawPassword)

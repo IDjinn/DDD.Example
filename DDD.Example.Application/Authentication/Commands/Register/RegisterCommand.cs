@@ -7,7 +7,7 @@ using MediatR;
 
 namespace DDD.Example.Application.Authentication.Commands.Register;
 
-public class RegisterCommand : Command, IRequest<ErrorOr<AuthResult>>
+public record RegisterCommand : Command, IRequest<ErrorOr<AuthResult>>
 {
     public string FirstName { get; init; } = null!;
     public string LastName { get; init; } = null!;
